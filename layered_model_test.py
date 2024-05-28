@@ -10,16 +10,16 @@ from layered_model import binarize_labels, get_mnist_data
 def test_define_dense_model_single_layer():
     model = define_dense_model_single_layer(43, activation_f='sigmoid', output_length=1)
     assert len(model.layers) == 1, " model should have 1 layer"
-    assert model.layers[0].input_shape == (None, 43), " input_shape is not correct"
-    assert model.layers[0].output_shape == (None, 1), " output_shape is not correct"
+    assert model.layers[0].input.shape == (None, 43), " input_shape is not correct"
+    assert model.layers[0].output.shape == (None, 1), " output_shape is not correct"
 
 
 def test_define_dense_model_with_hidden_layer():
     model = define_dense_model_with_hidden_layer(43, activation_func_array=['relu','sigmoid'], hidden_layer_size=11, output_length=1)
     assert len(model.layers) == 2, " model should have 2 layers"
-    assert model.layers[0].input_shape == (None, 43), " input_shape is not correct"
-    assert model.layers[0].output_shape == (None, 11), " output_shape is not correct"
-    assert model.layers[1].output_shape == (None, 1), " output_shape is not correct"
+    assert model.layers[0].input.shape == (None, 43), " input_shape is not correct"
+    assert model.layers[0].output.shape == (None, 11), " output_shape is not correct"
+    assert model.layers[1].output.shape == (None, 1), " output_shape is not correct"
 
 
 def test_fit_and_predict_mnist_single_digit_one_neuron():
